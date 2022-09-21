@@ -7,7 +7,6 @@ import scipy.special as sp
 
 import pfh.utils as utils
 from pfh.pfh import PFH, SPFH, FPFH
-
 if __name__=='__main__':
     # Import the data
     source_pc = utils.load_pc_np('data/plant_source.npy')
@@ -23,8 +22,8 @@ if __name__=='__main__':
     div = 2
     nneighbors = 8
     rad = 0.03
-    #Icp = PFH(et, div, nneighbors, rad)   # Full PFH
-    #Icp = SPFH(et, div, nneighbors, rad)  # Simplified PFH
+    # Icp = PFH(et, div, nneighbors, rad)   # Full PFH
+    # Icp = SPFH(et, div, nneighbors, rad)  # Simplified PFH
     Icp = FPFH(et, div, nneighbors, rad)   # Fast PFH
     transformed_source = Icp.solve(source_pc, target_pc)
     R_list = Icp._Rlist
